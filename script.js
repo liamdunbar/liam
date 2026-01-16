@@ -1,17 +1,22 @@
 const terminal = document.getElementById("terminalBody");
 
-/* TYPEWRITER */
-function typeText(text, speed = 15) {
+/* SAFE TYPEWRITER (NO INPUT DELETION) */
+function typeText(text, speed = 15, done) {
   terminal.textContent = "";
   let i = 0;
+
   const interval = setInterval(() => {
     terminal.textContent += text[i];
     i++;
-    if (i >= text.length) clearInterval(interval);
+
+    if (i >= text.length) {
+      clearInterval(interval);
+      if (done) done();
+    }
   }, speed);
 }
 
-/* LOG BOOT */
+/* BOOT LOG */
 typeText(
 `[SYS] Initializing kernel...
 [SYS] Loading terminal interface...
@@ -29,6 +34,13 @@ Name: Froylan Fahlan Aditya
 Alias: Liam Dunbar
 Age: 18
 Origin: Indonesia
+
+Froylan Fahlan Aditya, known online as Liam Dunbar, is an 18-year-old from Indonesia.
+He has a calm but introspective presence. He speaks Indonesian and English with a
+preference for a UK accent, and he's currently learning German.
+
+His heart is drawn to Austria and Germany — places he dreams of living in someday,
+hoping to find peace within himself and a sense of belonging he's been searching for.
 
 A quiet soul carrying many storms inside.
 Empathetic. Protective. Human.
@@ -59,19 +71,20 @@ Unwell — Matchbox Twenty
 `
 };
 
-/* CLICK HANDLER */
-document.querySelectorAll(".entry").forEach(e => {
-  e.onclick = () => {
-    const v = e.dataset.view;
-    if (v === "level3") {
+/* LEVEL CLICK HANDLER */
+document.querySelectorAll(".entry").forEach(entry => {
+  entry.onclick = () => {
+    const view = entry.dataset.view;
+
+    if (view === "level3") {
       passwordGate();
     } else {
-      typeText(`[SYS] Loading data...\n\n${DATA[v]}`);
+      typeText(`[SYS] Loading data...\n\n${DATA[view]}`);
     }
   };
 });
 
-/* PASSWORD GATE */
+/* PASSWORD GATE — ALWAYS DENIES */
 function passwordGate() {
   terminal.innerHTML = `
 LEVEL 3 — RESTRICTED
@@ -80,11 +93,13 @@ ENTER PASSWORD:
 
 <div class="command">
   <span>&gt;</span>
-  <input id="pw" autofocus>
+  <input id="pw" autofocus />
 </div>
 `;
 
-  document.getElementById("pw").addEventListener("keydown", e => {
+  const pw = document.getElementById("pw");
+
+  pw.addEventListener("keydown", e => {
     if (e.key === "Enter") {
       typeText(
 `[ERR] ACCESS DENIED
@@ -93,34 +108,44 @@ ENTER PASSWORD:
 Entering restricted command mode...
 
 Type "help"`,
-20
+20,
+commandMode
       );
-      setTimeout(commandMode, 1200);
     }
   });
 }
 
-/* COMMAND MODE */
+/* RESTRICTED COMMAND MODE */
 function commandMode() {
   terminal.innerHTML += `
 <div class="command">
   <span>&gt;</span>
-  <input id="cmd">
+  <input id="cmd" autofocus />
 </div>
 `;
 
-  document.getElementById("cmd").addEventListener("keydown", e => {
+  const cmdInput = document.getElementById("cmd");
+
+  cmdInput.addEventListener("keydown", e => {
     if (e.key === "Enter") {
-      const cmd = e.target.value.trim();
+      const cmd = e.target.value.trim().toLowerCase();
       let out = "\nUNKNOWN COMMAND";
 
-      if (cmd === "help") out = "\nhelp\ncontact";
-      if (cmd === "contact") out = `
+      if (cmd === "help") {
+        out = "\nAVAILABLE COMMANDS:\nhelp\ncontact";
+      }
+
+      if (cmd === "contact") {
+        out = `
+CONTACT INFORMATION
+
 Instagram: @simplefroy
 WhatsApp: +62 851-6184-0928
 Telegram: @Wakeyliam
 Snapchat: zfroyden
-Twitter: @FahlanAditya`;
+Twitter: @FahlanAditya
+`;
+      }
 
       terminal.textContent += `\n> ${cmd}\n${out}`;
       e.target.value = "";

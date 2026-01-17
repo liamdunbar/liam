@@ -71,6 +71,7 @@ html, body {
 
 .terminal-body {
   padding: 12px;
+  padding-bottom: 80px; /* reserve space for footer */
   overflow-y: auto;
   white-space: pre-wrap;
   font-size: 14px;
@@ -95,53 +96,41 @@ html, body {
   border-color: #c44;
 }
 
-/* COMMAND INPUT */
-.command {
-  display: flex;
-  margin-top: 10px;
-}
-
-.command span {
-  margin-right: 6px;
-}
-
-.command input {
-  background: transparent;
-  border: none;
-  color: #f2e86d;
-  outline: none;
-  font-family: monospace;
-  flex: 1;
-}
-
+/* FOOTER */
 .footer {
   position: absolute;
   bottom: 18px;
   left: 28px;
   font-size: 13px;
+  pointer-events: none;
 }
 
 /* LEVEL 4 — UPDATES */
+
 .update {
-  border-top: 1px dashed rgba(242,232,109,0.4);
-  padding-top: 14px;
-  margin-top: 14px;
+  border-top: 1px solid #f2e86d;
+  border-bottom: 1px solid #f2e86d;
+  padding: 14px 0;
+  margin: 14px 0;
 }
 
 .update-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .update-avatar {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   border: 1px solid #f2e86d;
   object-fit: cover;
 }
 
 .update-meta {
+  display: flex;
+  flex-direction: column;
   font-size: 12px;
   line-height: 1.4;
 }
@@ -156,11 +145,18 @@ html, body {
 }
 
 .update-text {
+  margin-top: 10px;
+}
+
+.update-logs {
   margin-top: 8px;
+  opacity: 0.85;
 }
 
 .update-image {
-  margin-top: 10px;
+  display: block;
+  margin-top: 12px;
   max-width: 100%;
+  max-height: 360px;
   border: 1px solid rgba(242,232,109,0.4);
 }

@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  font-family: monospace;
+  color: #f2e86d;
+}
+
+/* CRT */
+.crt {
+  position: absolute;
+  inset: 0;
+  background: #050505;
+  overflow: hidden;
+}
+
+.crt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* FLICKER */
+.flicker {
+  animation: flicker 6s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  97% { opacity: 1; }
+  98% { opacity: 0.85; }
+  99% { opacity: 1; }
+}
+
+/* LAYOUT */
+.terminal {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  padding: 28px;
+  height: 100%;
+}
+
+.terminal-main {
+  border: 1px solid #f2e86d;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.9);
+}
+
+.terminal-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f2e86d;
+  font-weight: bold;
+}
+
+.terminal-body {
+  padding: 12px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* PANEL */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entry {
+  padding: 10px;
+  border: 1px solid #f2e86d;
+  cursor: pointer;
+}
+
+.entry.denied {
+  color: #c44;
+  border-color: #c44;
+}
+
+/* COMMAND INPUT */
+.command {
+  display: flex;
+  margin-top: 10px;
+}
+
+.command span {
+  margin-right: 6px;
+}
+
+.command input {
+  background: transparent;
+  border: none;
+  color: #f2e86d;
+  outline: none;
+  font-family: monospace;
+  flex: 1;
+}
+
+.footer {
+  position: absolute;
+  bottom: 18px;
+  left: 28px;
+  font-size: 13px;
+}

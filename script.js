@@ -1,6 +1,8 @@
 const terminal = document.getElementById("terminalBody");
 
-/* SAFE TYPEWRITER (NO INPUT DELETION) */
+/* ========= TERMINAL MODE (Levels 1–3) ========= */
+
+/* SAFE TYPEWRITER (unchanged behavior) */
 function typeText(text, speed = 15, done) {
   terminal.textContent = "";
   let i = 0;
@@ -16,7 +18,7 @@ function typeText(text, speed = 15, done) {
   }, speed);
 }
 
-/* BOOT LOG */
+/* BOOT */
 typeText(
 `[SYS] Initializing kernel...
 [SYS] Loading terminal interface...
@@ -25,7 +27,7 @@ typeText(
 SELECT A LEVEL`
 );
 
-/* DATA */
+/* DATA (unchanged) */
 const DATA = {
   level1: `
 SUBJECT PROFILE — LEVEL 1
@@ -71,20 +73,7 @@ Unwell — Matchbox Twenty
 `
 };
 
-/* LEVEL CLICK HANDLER */
-document.querySelectorAll(".entry").forEach(entry => {
-  entry.onclick = () => {
-    const view = entry.dataset.view;
-
-    if (view === "level3") {
-      passwordGate();
-    } else {
-      typeText(`[SYS] Loading data...\n\n${DATA[view]}`);
-    }
-  };
-});
-
-/* PASSWORD GATE — ALWAYS DENIES */
+/* PASSWORD GATE — ALWAYS DENIES (unchanged) */
 function passwordGate() {
   terminal.innerHTML = `
 LEVEL 3 — RESTRICTED
@@ -115,7 +104,7 @@ commandMode
   });
 }
 
-/* RESTRICTED COMMAND MODE */
+/* RESTRICTED COMMAND MODE (unchanged) */
 function commandMode() {
   terminal.innerHTML += `
 <div class="command">
@@ -152,3 +141,63 @@ Twitter: @FahlanAditya
     }
   });
 }
+
+/* ========= DOCUMENT MODE (Level 4) ========= */
+
+/* Render Level 4 once, no typewriter, no clearing loop */
+function renderLevel4Document() {
+  terminal.innerHTML = `
+<div style="white-space: normal; line-height: 1.6;">
+
+  <div style="border-top:1px solid #f2e86d; border-bottom:1px solid #f2e86d; padding:12px 0; margin-bottom:16px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="assets/profile.jpg"
+           alt="Profile"
+           style="width:40px; height:40px; border-radius:50%; border:1px solid #f2e86d; object-fit:cover;">
+      <div>
+        <strong>Liam Dunbar</strong>
+        <span style="opacity:.75;"> @liamdunbar · 2026-01-02</span>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;">
+      This is a static update rendered in document mode.
+      It lives inside the terminal window but does not behave like a terminal.
+      Nothing here clears itself. Nothing types over it.
+    </div>
+
+    <!-- Optional image (keep or remove later) -->
+    <img src="assets/placeholder.jpg"
+         alt="Attachment"
+         style="display:block; margin-top:10px; max-width:100%; max-height:320px; border:1px solid #f2e86d;">
+  </div>
+
+  <div style="border-top:1px solid #f2e86d; padding-top:12px; opacity:.85;">
+    End of log.
+  </div>
+
+</div>
+`;
+}
+
+/* ========= LEVEL CLICK HANDLER ========= */
+
+document.querySelectorAll(".entry").forEach(entry => {
+  entry.onclick = () => {
+    const view = entry.dataset.view;
+
+    if (view === "level3") {
+      passwordGate();
+      return;
+    }
+
+    if (view === "level4") {
+      // SWITCH TO DOCUMENT MODE (NO typeText)
+      renderLevel4Document();
+      return;
+    }
+
+    // Levels 1–2 stay TERMINAL MODE
+    typeText(`[SYS] Loading data...\n\n${DATA[view]}`);
+  };
+});

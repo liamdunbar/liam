@@ -9,15 +9,15 @@
 <body>
 
 <section class="state">
-  <div class="crt terminal flicker">
+  <div class="crt terminal">
 
     <div class="terminal-main">
       <div class="terminal-header">SYSTEM TERMINAL</div>
 
-      <div class="terminal-body" id="terminalBody">
+      <div class="terminal-body">
 
         <!-- LEVEL 1 -->
-        <div id="view-level1" class="view hidden">
+        <div id="level1" class="view">
 <pre>
 SUBJECT PROFILE — LEVEL 1
 
@@ -39,7 +39,7 @@ Empathetic. Protective. Human.
         </div>
 
         <!-- LEVEL 2A -->
-        <div id="view-level2a" class="view hidden">
+        <div id="level2a" class="view hidden">
 <pre>
 PSYCHOLOGICAL RECORD — LEVEL 2
 
@@ -56,7 +56,7 @@ Chronic Loneliness and Alienation
         </div>
 
         <!-- LEVEL 2B -->
-        <div id="view-level2b" class="view hidden">
+        <div id="level2b" class="view hidden">
 <pre>
 MUSIC ARCHIVE — LEVEL 2
 
@@ -68,21 +68,29 @@ Unwell — Matchbox Twenty
 </pre>
         </div>
 
+        <!-- LEVEL 3 -->
+        <div id="level3" class="view hidden">
+<pre>
+LEVEL 3 — RESTRICTED
+
+ACCESS DENIED
+</pre>
+        </div>
+
         <!-- LEVEL 4 -->
-        <div id="view-level4" class="view hidden">
-          <div id="updatesContainer">
-            <!-- updates injected here -->
-          </div>
+        <div id="level4" class="view hidden">
+          <div id="updates"></div>
         </div>
 
       </div>
     </div>
 
     <div class="right-panel">
-      <div class="entry" data-view="level1">LEVEL 1</div>
-      <div class="entry" data-view="level2a">LEVEL 2 — RESEARCH ZONE 1</div>
-      <div class="entry" data-view="level2b">LEVEL 2 — RESEARCH ZONE 2</div>
-      <div class="entry" data-view="level4">LEVEL 4 — UPDATES</div>
+      <div class="entry" data-target="level1">LEVEL 1</div>
+      <div class="entry" data-target="level2a">LEVEL 2 — RESEARCH ZONE 1</div>
+      <div class="entry" data-target="level2b">LEVEL 2 — RESEARCH ZONE 2</div>
+      <div class="entry denied" data-target="level3">LEVEL 3 — RESTRICTED</div>
+      <div class="entry" data-target="level4">LEVEL 4 — UPDATES</div>
     </div>
 
     <div class="footer">AREA AUTHORIZED</div>

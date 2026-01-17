@@ -120,3 +120,18 @@ html, body {
   left: 28px;
   font-size: 13px;
 }
+/* ===== Level 4: Document Mode Safety ===== */
+.terminal-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.terminal-body {
+  overflow-y: auto;
+}
+
+/* Prevent footer overlap visually */
+.terminal-main {
+  position: relative;
+}

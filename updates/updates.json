@@ -1,10 +1,18 @@
 {
   "updates": [
-    {"id": "2026-01-03-001",
+    {
+      "id": "2026-01-02-001",
+      "date": "2026-01-22",
+      "displayName": "Froylan",
+      "username": "@froy",
+      "text": "I’m not losing my mind — I’m just going through a period where I’m unwell and overwhelmed. It might not be obvious right now, but if you give me time and stay, you’ll see that this isn’t all I am. There’s more to me than what shows on the surface.",
+      "image": "unwell.mp4"
+    },
+      "id": "2026-01-03-001",
       "date": "2026-01-19",
       "displayName": "Froylan",
       "username": "@froy",
-      "text": "I am the quiet one. The one who listens to others conversations while thinking to herself. Why is it so hard to be one of them? Why is it so goddamn hard to like the same things as them? why are you the Peace of a puzzle that doesn't fit. Why the hell are you like this? They don't understand me. I don't understand them. So I just ask what do I need to change about myself? What do I need to do to be just a little less miserable? Heart aches as I open my mouth. Fear that comes to my mind, the voices that shoutings, you're not enough. So I just stop and get back to where I was. Because as you know, I am the quiet one.",
+      "text": "I am the quiet one. The one who listens to others conversations while thinking to himself. Why is it so hard to be one of them? Why is it so goddamn hard to like the same things as them? why are you the Peace of a puzzle that doesn't fit. Why the hell are you like this? They don't understand me. I don't understand them. So I just ask what do I need to change about myself? What do I need to do to be just a little less miserable? Heart aches as I open my mouth. Fear that comes to my mind, the voices that shoutings, you're not enough. So I just stop and get back to where I was. Because as you know, I am the quiet one.",
       "image": null
     },
     {

@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+       "id": "2026-01-05-001",
+      "date": "2026-01-25",
+      "displayName": "Froylan",
+      "username": "@froy",
+      "text": "今夜は祝福のはず\nTonight is supposed to be a blessing.\nだがなぜ迷いと苦痛しかない\nBut why is there only confusion and pain?\nたとえ、真実は天外に閉じ込められようと 我が家を失うことはない\nEven if the truth is locked beyond the heavens, I will not lose my home",
+      "image": "updates/media/aetherlumine.jpg"
+    },
+    {
       "id": "2026-01-04-001",
       "date": "2026-01-22",
       "displayName": "Froylan",

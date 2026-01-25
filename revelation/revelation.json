@@ -1,1 +1,12 @@
-poo c
+{
+  "revelations": [
+    {
+      "id": "rev-001",
+      "date": "2026-01-26",
+      "displayName": "Froylan",
+      "username": "@froy",
+      "caption": "Dammit it happened again.",
+      "video": "revelation/media/unwell.mp4"
+    }
+  ]
+}

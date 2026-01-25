@@ -5,6 +5,7 @@ const terminal = document.getElementById("terminalBody");
 /* SAFE TYPEWRITER */
 function typeText(text, speed = 15, done) {
   terminal.textContent = "";
+  terminal.style.whiteSpace = "pre-wrap";
   let i = 0;
 
   const interval = setInterval(() => {
@@ -70,11 +71,12 @@ Mirror — Lil Wayne ft. Bruno Mars
 Iris — Goo Goo Dolls
 Somewhere I Belong — Linkin Park
 Unwell — Matchbox Twenty
-Perfect - Simple Plan
+Perfect — Simple Plan
 `
 };
 
-/* PASSWORD GATE — ALWAYS DENIES */
+/* ========= LEVEL 3 ========= */
+
 function passwordGate() {
   terminal.innerHTML = `
 LEVEL 3 — RESTRICTED
@@ -105,7 +107,6 @@ commandMode
   });
 }
 
-/* RESTRICTED COMMAND MODE */
 function commandMode() {
   terminal.innerHTML += `
 <div class="command">
@@ -143,7 +144,7 @@ Twitter: @FahlanAditya
   });
 }
 
-/* ========= DOCUMENT MODE (Level 4) ========= */
+/* ========= LEVEL 4 — UPDATES ========= */
 
 function renderLevel4Document() {
   terminal.innerHTML = "";
@@ -163,7 +164,6 @@ function renderLevel4Document() {
         block.innerHTML = `
           <div style="display:flex; align-items:center; gap:10px;">
             <img src="assets/profile.jpg"
-                 alt="Profile"
                  style="width:40px;height:40px;border-radius:50%;
                         border:1px solid #f2e86d;object-fit:cover;">
             <div>
@@ -175,19 +175,16 @@ function renderLevel4Document() {
           </div>
 
           <div style="margin-top:10px;">
-            ${update.text}
+            ${update.text.replace(/\n/g, "<br>")}
           </div>
         `;
 
         if (update.image) {
           const img = document.createElement("img");
           img.src = update.image;
-          img.alt = "Attachment";
-          img.style.display = "block";
-          img.style.marginTop = "10px";
           img.style.maxWidth = "100%";
-          img.style.maxHeight = "320px";
           img.style.border = "1px solid #f2e86d";
+          img.style.marginTop = "10px";
           block.appendChild(img);
         }
 
@@ -196,6 +193,55 @@ function renderLevel4Document() {
     })
     .catch(() => {
       terminal.textContent = "FAILED TO LOAD updates.json";
+    });
+}
+
+/* ========= LEVEL 4 — REVELATION ========= */
+
+function renderRevelation() {
+  terminal.innerHTML = "";
+  terminal.style.whiteSpace = "normal";
+
+  fetch("revelation/revelation.json")
+    .then(res => res.json())
+    .then(data => {
+      data.revelations.forEach(post => {
+        const block = document.createElement("div");
+
+        block.style.borderTop = "1px solid #f2e86d";
+        block.style.borderBottom = "1px solid #f2e86d";
+        block.style.padding = "12px 0";
+        block.style.marginBottom = "20px";
+
+        block.innerHTML = `
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="assets/profile.jpg"
+                 style="width:40px;height:40px;border-radius:50%;
+                        border:1px solid #f2e86d;">
+            <div>
+              <strong>${post.displayName}</strong>
+              <span style="opacity:.75;">
+                ${post.username} · ${post.date}
+              </span>
+            </div>
+          </div>
+
+          <div style="margin:10px 0;">
+            ${post.caption.replace(/\n/g, "<br>")}
+          </div>
+
+          <video controls
+                 style="width:100%; max-height:420px;
+                        border:1px solid #f2e86d;">
+            <source src="${post.video}" type="video/mp4">
+          </video>
+        `;
+
+        terminal.appendChild(block);
+      });
+    })
+    .catch(() => {
+      terminal.textContent = "FAILED TO LOAD revelation.json";
     });
 }
 
@@ -212,6 +258,11 @@ document.querySelectorAll(".entry").forEach(entry => {
 
     if (view === "level4") {
       renderLevel4Document();
+      return;
+    }
+
+    if (view === "revelation") {
+      renderRevelation();
       return;
     }
 

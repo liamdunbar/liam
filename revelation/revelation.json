@@ -1,6 +1,14 @@
 {
   "revelations": [
     {
+      "id": "rev-002",
+      "date": "2026-01-26",
+      "displayName": "Froylan",
+      "username": "@froy",
+      "caption": "They say... If suffering has an end... Then I will be the Deliverer. But why is there absolutely nothing, behind me now?\n\n— Coronal Radiance.",
+      "video": "revelation/media/phainon.mp4"
+    },
+    {
       "id": "rev-001",
       "date": "2026-01-26",
       "displayName": "Froylan",

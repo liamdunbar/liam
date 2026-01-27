@@ -1,6 +1,14 @@
 {
   "revelations": [
     {
+      "id": "rev-003",
+      "date": "2026-01-27",
+      "displayName": "Aditya",
+      "username": "@fahlan",
+      "caption": "vent?",
+      "video": "revelation/media/pity.mp4"
+    },
+    {
       "id": "rev-002",
       "date": "2026-01-26",
       "displayName": "Froylan",

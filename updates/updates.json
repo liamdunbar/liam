@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+     "id": "2026-01-09-001",
+      "date": "2026-01-29",
+      "displayName": "Aditya",
+      "username": "@Fahlan",
+      "text": "It happened again.",
+      "image": "updates/media/unstable.jpg"
+    },
+    {
      "id": "2026-01-08-001",
       "date": "2026-01-27",
       "displayName": "Aditya",

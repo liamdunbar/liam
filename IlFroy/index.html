@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARCHIVE TERMINAL</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  background:#000;
+  font-family:monospace;
+  color:#f2e86d;
+  overflow:hidden;
+}
+
+/* CRT CONTAINER */
+.crt{
+  position:absolute;
+  inset:0;
+  background:#050505;
+}
+
+/* scanlines */
+.crt::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* TERMINAL WINDOW */
+.terminal{
+  position:absolute;
+  inset:28px;
+  border:1px solid #f2e86d;
+  display:flex;
+  flex-direction:column;
+  background:rgba(0,0,0,0.92);
+}
+
+.header{
+  padding:8px 12px;
+  border-bottom:1px solid #f2e86d;
+  font-weight:bold;
+}
+
+.body{
+  padding:16px;
+  overflow-y:auto;
+  line-height:1.6;
+  white-space:normal;
+}
+
+/* TITLE + CONTENT */
+.title{
+  font-weight:bold;
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.block{
+  border-top:1px solid #f2e86d;
+  border-bottom:1px solid #f2e86d;
+  padding:14px 0;
+  margin-bottom:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="crt">
+
+  <div class="terminal">
+    <div class="header">SYSTEM TERMINAL</div>
+
+    <div class="body">
+
+      <div class="block">
+        <div class="title">ARCHIVE ENTRY</div>
+        <div>
+          This page exists as a quiet container.
+          No scripts. No movement. No commands.
+          Just a place where words can stay still
+          without being erased.
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="title">LOG NOTE</div>
+        <div>
+          Sometimes the terminal does not need to speak.
+          It only needs to hold what was written.
+          Static pages like this become anchors —
+          a memory that does not scroll away.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

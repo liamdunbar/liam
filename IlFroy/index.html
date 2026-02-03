@@ -21,14 +21,13 @@ html,body{
   overflow:hidden;
 }
 
-/* CRT CONTAINER */
+/* CRT BACKGROUND */
 .crt{
   position:absolute;
   inset:0;
   background:#050505;
 }
 
-/* scanlines */
 .crt::before{
   content:"";
   position:absolute;
@@ -43,7 +42,7 @@ html,body{
   );
 }
 
-/* TERMINAL WINDOW */
+/* TERMINAL */
 .terminal{
   position:absolute;
   inset:28px;
@@ -60,24 +59,17 @@ html,body{
 }
 
 .body{
-  padding:16px;
+  padding:18px;
   overflow-y:auto;
-  line-height:1.6;
+  line-height:1.7;
   white-space:normal;
 }
 
-/* TITLE + CONTENT */
+/* TITLE */
 .title{
   font-weight:bold;
-  font-size:18px;
-  margin-bottom:12px;
-}
-
-.block{
-  border-top:1px solid #f2e86d;
-  border-bottom:1px solid #f2e86d;
-  padding:14px 0;
-  margin-bottom:20px;
+  font-size:20px;
+  margin-bottom:14px;
 }
 </style>
 </head>
@@ -85,35 +77,42 @@ html,body{
 <body>
 
 <div class="crt">
-
   <div class="terminal">
     <div class="header">SYSTEM TERMINAL</div>
 
     <div class="body">
 
-      <div class="block">
-        <div class="title">ARCHIVE ENTRY</div>
-        <div>
-          This page exists as a quiet container.
-          No scripts. No movement. No commands.
-          Just a place where words can stay still
-          without being erased.
-        </div>
-      </div>
+      <div class="title">CHRONICLE ENTRY — THE QUIET OBSERVER</div>
 
-      <div class="block">
-        <div class="title">LOG NOTE</div>
-        <div>
-          Sometimes the terminal does not need to speak.
-          It only needs to hold what was written.
-          Static pages like this become anchors —
-          a memory that does not scroll away.
-        </div>
+      <div>
+        There was a time when silence felt safer than speaking. Not because words
+        didn’t exist, but because every sentence felt heavy like stepping onto
+        thin glass and waiting for it to crack beneath your weight. I used to sit
+        at the edge of rooms, listening more than living, watching conversations
+        unfold like scenes from a story that never asked me to be part of it.
+        People laughed easily. They moved without hesitation. And I wondered how
+        they carried themselves without the constant noise inside their heads.
+
+        Nights were quieter, but not peaceful. The mind replayed old moments,
+        unfinished thoughts, and questions without answers. Sometimes I wrote
+        things down just to prove I was still here, still thinking, still feeling.
+        A terminal screen became a strange kind of refuge a place where words
+        stayed exactly as they were typed, untouched by misunderstanding.
+
+        I learned that being quiet does not mean being empty. It means holding
+        storms behind steady eyes. It means choosing when to speak instead of
+        shouting into the void. And even when everything feels uncertain, there
+        is still a small light that refuses to disappear not loud, not dramatic,
+        just persistent.
+
+        Maybe this page is nothing more than a pause between chapters.
+        Maybe it is proof that stories don’t always need movement to exist.
+        Some moments are meant to stay still, preserved like a memory inside
+        an old machine that continues to glow long after everyone else has gone.
       </div>
 
     </div>
   </div>
-
 </div>
 
 </body>

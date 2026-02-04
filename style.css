@@ -10,17 +10,19 @@ html, body {
   background: #000;
   overflow: hidden;
   font-family: monospace;
-  color: #f2e86d;
+  color: #ff3b3b; /* INFECTED RED */
 }
 
-/* CRT */
+/* ===== INFECTED CRT ===== */
 .crt {
   position: absolute;
   inset: 0;
-  background: #050505;
+  background: #050000;
   overflow: hidden;
+  animation: virusFlicker 0.08s infinite;
 }
 
+/* RED SCANLINES */
 .crt::before {
   content: "";
   position: absolute;
@@ -28,14 +30,29 @@ html, body {
   pointer-events: none;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.05),
-    rgba(255,255,255,0.05) 1px,
+    rgba(255,0,0,0.08),
+    rgba(255,0,0,0.08) 1px,
     transparent 2px,
     transparent 4px
   );
 }
 
-/* FLICKER */
+/* MOVING VIRUS OVERLAY */
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,0,0,0.15) 50%,
+    transparent 60%
+  );
+  animation: virusScan 3s linear infinite;
+}
+
+/* ===== FLICKER ===== */
 .flicker {
   animation: flicker 6s infinite;
 }
@@ -47,41 +64,64 @@ html, body {
   99% { opacity: 1; }
 }
 
-/* LAYOUT */
+/* VIRUS MICRO FLICKER */
+@keyframes virusFlicker {
+  0% { opacity: 1; }
+  50% { opacity: .94; }
+  100% { opacity: 1; }
+}
+
+@keyframes virusScan {
+  from { transform: translateX(-30%); }
+  to { transform: translateX(30%); }
+}
+
+/* ===== LAYOUT ===== */
 .terminal {
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 20px;
   padding: 28px;
-  height: 100vh;              /* LOCK VIEWPORT */
+  height: 100vh;
 }
 
 /* LEFT TERMINAL */
 .terminal-main {
-  border: 1px solid #f2e86d;
+  border: 1px solid #ff0000;
   display: flex;
   flex-direction: column;
-  background: rgba(0,0,0,0.9);
-  height: 100%;               /* REQUIRED */
-  min-height: 0;              /* CRITICAL FIX */
+  background: rgba(10,0,0,0.92);
+  height: 100%;
+  min-height: 0;
   position: relative;
+  box-shadow:
+    0 0 12px #ff0000,
+    inset 0 0 30px rgba(255,0,0,0.35);
 }
 
+/* HEADER GLITCH */
 .terminal-header {
   padding: 8px 12px;
-  border-bottom: 1px solid #f2e86d;
+  border-bottom: 1px solid #ff0000;
   font-weight: bold;
   flex-shrink: 0;
+  text-shadow:
+    -2px 0 #ff0000,
+     2px 0 #550000;
+  animation: textGlitch 0.15s infinite;
 }
 
 /* SCROLLABLE CONTENT */
 .terminal-body {
   padding: 12px;
-  flex: 1;                    /* TAKE REMAINING SPACE */
-  overflow-y: auto;           /* SCROLL HERE ONLY */
+  flex: 1;
+  overflow-y: auto;
   white-space: pre-wrap;
   font-size: 14px;
   line-height: 1.6;
+  text-shadow:
+    -1px 0 rgba(255,0,0,0.8),
+     1px 0 rgba(120,0,0,0.6);
 }
 
 /* IMAGES SAFETY */
@@ -90,6 +130,8 @@ html, body {
   height: auto;
   display: block;
   margin: 12px 0;
+  border: 1px solid #ff0000;
+  box-shadow: 0 0 10px rgba(255,0,0,0.5);
 }
 
 /* PANEL */
@@ -101,13 +143,22 @@ html, body {
 
 .entry {
   padding: 10px;
-  border: 1px solid #f2e86d;
+  border: 1px solid #ff0000;
   cursor: pointer;
+  text-shadow:
+    -1px 0 #ff0000,
+     1px 0 #660000;
+  transition: 0.2s;
+}
+
+.entry:hover {
+  background: rgba(255,0,0,0.08);
+  box-shadow: 0 0 8px #ff0000;
 }
 
 .entry.denied {
-  color: #c44;
-  border-color: #c44;
+  color: #ff4a4a;
+  border-color: #ff4a4a;
 }
 
 /* COMMAND INPUT */
@@ -123,10 +174,13 @@ html, body {
 .command input {
   background: transparent;
   border: none;
-  color: #f2e86d;
+  color: #ff3b3b;
   outline: none;
   font-family: monospace;
   flex: 1;
+  text-shadow:
+    -1px 0 #ff0000,
+     1px 0 #660000;
 }
 
 /* FOOTER */
@@ -135,5 +189,16 @@ html, body {
   bottom: 18px;
   left: 28px;
   font-size: 13px;
-  pointer-events: none;       /* NEVER BLOCK CONTENT */
+  pointer-events: none;
+  text-shadow:
+    -1px 0 #ff0000,
+     1px 0 #660000;
+}
+
+/* TEXT GLITCH */
+@keyframes textGlitch {
+  0% { transform: skewX(0deg); }
+  25% { transform: skewX(1deg); }
+  50% { transform: skewX(-1deg); }
+  100% { transform: skewX(0deg); }
 }

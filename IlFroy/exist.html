@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARCHIVE TERMINAL</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  background:#000;
+  font-family:monospace;
+  color:#f2e86d;
+  overflow:hidden;
+}
+
+/* CRT BACKGROUND */
+.crt{
+  position:absolute;
+  inset:0;
+  background:#050505;
+}
+
+.crt::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* TERMINAL */
+.terminal{
+  position:absolute;
+  inset:28px;
+  border:1px solid #f2e86d;
+  display:flex;
+  flex-direction:column;
+  background:rgba(0,0,0,0.92);
+}
+
+.header{
+  padding:8px 12px;
+  border-bottom:1px solid #f2e86d;
+  font-weight:bold;
+}
+
+.body{
+  padding:18px;
+  overflow-y:auto;
+  line-height:1.7;
+  white-space:normal;
+}
+
+.title{
+  font-weight:bold;
+  font-size:20px;
+  margin-bottom:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="crt">
+  <div class="terminal">
+    <div class="header">SYSTEM TERMINAL</div>
+
+    <div class="body">
+
+      <div class="title">CHRONICLE ENTRY — I EXIST — Holding On In The Quiet</div>
+
+      <div>
+        A voice reaches through the darkness, trying to stay awake in the midst of a heavy night. 
+        Two people support each other while chaos lives outside the room: fear, family wounds, and the echo of words that cut too deep. 
+        One searches for proof of existence, repeatedly saying "look at me" as if it were a lifeline, while the other responds with warmth instead of judgment. 
+        This fragile connection is built from blankets, late-night calls, and shared survival. 
+        It's not perfect love, but it's a place to breathe. 
+        Beneath the noise, the message remains simple: 
+        "I’m scared. I’m not okay. But I’m still here, and I don’t want to face it alone."
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

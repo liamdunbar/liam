@@ -14,8 +14,8 @@
   <!-- Top Bar -->
   <div class="topbar">
       <div class="left">
-          <img class="avatar-small" src="updates/media/webprofile.jpg">
-          <span class="username">Froylan</span>
+          <img class="avatar-small" id="avatarSmall" src="updates/media/webprofile.jpg">
+          <span class="username" id="displayNameTop">Froylan</span>
       </div>
 
       <button class="start-btn">Start</button>
@@ -27,10 +27,10 @@
 
       <!-- Safety Card -->
       <div class="profile-card">
-          <img class="avatar-big" src="updates/media/webprofile.jpg">
+          <img class="avatar-big" id="avatarBig" src="updates/media/webprofile.jpg">
 
-          <h3>Froylan</h3>
-          <p class="handle">@froy</p>
+          <h3 id="displayNameCard">Froylan</h3>
+          <p class="handle" id="usernameHandle">@froy</p>
 
           <h2>First conversation with Froylan</h2>
           <p class="desc">
@@ -40,7 +40,7 @@
       </div>
 
       <!-- Date -->
-      <div class="date">Feb 11, 2026 1:16 AM</div>
+      <div class="date" id="dateText">Feb 11, 2026 1:16 AM</div>
 
       <!-- System text -->
       <div class="system">
@@ -117,7 +117,6 @@
 </div>
 
 
-<!-- ✅ THIS LINE WAS ADDED -->
 <script src="script.js"></script>
 
 </body>

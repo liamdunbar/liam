@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // PROFILE ELEMENTS
   const displayNameTop = document.getElementById("displayNameTop");
   const displayNameCard = document.getElementById("displayNameCard");
+  const conversationTitle = document.getElementById("conversationTitle"); // ✅ NEW
   const usernameHandle = document.getElementById("usernameHandle");
   const dateText = document.getElementById("dateText");
   const avatarSmall = document.getElementById("avatarSmall");
@@ -66,6 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (newDisplayName) {
       displayNameTop.textContent = newDisplayName;
       displayNameCard.textContent = newDisplayName;
+      if (conversationTitle) {
+        conversationTitle.textContent = "First conversation with " + newDisplayName;
+      }
     }
 
     if (newUsername) {
